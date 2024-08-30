@@ -3,6 +3,9 @@ import 'package:clean_architecture_with_bloc/app/ui/screens/main/main_screen.dar
 import 'package:clean_architecture_with_bloc/app/ui/screens/main/main_screen_view_model.dart';
 import 'package:clean_architecture_with_bloc/app/ui/screens/splahs/splash_screen.dart';
 import 'package:clean_architecture_with_bloc/app/ui/screens/splahs/splash_screen_view_model.dart';
+import 'package:clean_architecture_with_bloc/core/di/inject.dart';
+import 'package:clean_architecture_with_bloc/domain/bloc/home_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouterConfig {
@@ -26,8 +29,9 @@ class AppRouterConfig {
     GoRoute(
       path: '/main',
       name: AppRoute.main,
-      builder: (context, state) => MainScreen(
-        viewModel: MainScreenViewModel(),
+      builder: (context, state) => BlocProvider<HomeBloc>(
+        create: (context) => HomeBloc(inject()),
+        child: MainScreen(viewModel: MainScreenViewModel()),
       ),
     ),
   ];

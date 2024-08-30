@@ -1,4 +1,5 @@
 import 'package:clean_architecture_with_bloc/app/ui/screens/main/home/home_screen.dart';
+import 'package:clean_architecture_with_bloc/app/ui/screens/main/home/home_screen_view_model.dart';
 import 'package:clean_architecture_with_bloc/app/ui/screens/main/main_screen_view_model.dart';
 import 'package:clean_architecture_with_bloc/app/ui/screens/main/profile/profile_screen.dart';
 import 'package:clean_architecture_with_bloc/app/ui/screens/main/search/search_screen.dart';
@@ -29,11 +30,11 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        children: const [
-          HomeScreen(),
-          SearchScreen(),
-          VideoScreen(),
-          ProfileScreen(),
+        children: [
+          HomeScreen(viewModel: HomeScreenViewModel()),
+          const SearchScreen(),
+          const VideoScreen(),
+          const ProfileScreen(),
         ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(pageController: _pageController),

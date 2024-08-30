@@ -2,6 +2,7 @@ import 'package:clean_architecture_with_bloc/app/ui/screens/splahs/splash_screen
 import 'package:clean_architecture_with_bloc/library/resource/assets.dart';
 import 'package:clean_architecture_with_bloc/library/resource/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(seconds: 2));
       if (mounted) {
         widget.viewModel.navigateToMainScreen(context);
