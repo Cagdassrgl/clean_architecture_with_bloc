@@ -1,21 +1,13 @@
+import 'package:clean_architecture_with_bloc/app/imdb_clone_app.dart';
+import 'package:clean_architecture_with_bloc/core/di/di_container.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  await Hive.initFlutter();
+  await initDi();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Container(),
-    );
-  }
+  runApp(const IMDBCloneApp());
 }
